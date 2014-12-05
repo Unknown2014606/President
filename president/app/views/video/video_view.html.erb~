@@ -6,7 +6,6 @@
 	   <script src="rotate.js"></script>
 	   <%= stylesheet_link_tag "video" %>
 	   <h2>The Beauty <abbr title="Cascading Style Sheets"></abbr> &nbsp;&nbsp;&nbsp;&nbsp;Debate</h2>
-	   <%= button_to 'back', welcome_path %>
 	</head>
 
 	<body background="">

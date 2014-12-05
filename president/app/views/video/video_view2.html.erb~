@@ -5,7 +5,6 @@
   <script src="CJL.0.1.min.js"></script>
   <script src="rotate.js"></script>
   <%= stylesheet_link_tag "video" %>
-  <%= button_to 'back', welcome_path %>
 </head>
 <body background=""> 
   <div id="mainbg">
