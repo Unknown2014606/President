@@ -1,0 +1,92 @@
+	<html>
+	<head>
+	   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	   <title>President Debate Videos</title>
+	   <script src="CJL.0.1.min.js"></script>
+	   <script src="rotate.js"></script>
+	   <%= stylesheet_link_tag "video" %>
+	   <h2>The Beauty <abbr title="Cascading Style Sheets"></abbr> &nbsp;&nbsp;&nbsp;&nbsp;Debate</h2>
+	</head>
+
+	<body background="">
+	<div class="page-wrapper">
+	<div class="main supporting" id="zen-supporting" role="main">
+
+		<h3>
+		<strong>Debate Video Title:</strong>
+		<%= @video.title %>
+		</h3>
+  	<br>
+  	  	<br>
+		<p>
+	  		<%= @video.embed.html_safe %>
+		</p>
+		<p>
+	 	 <strong>Debate Topic:</strong>
+	  	<%= @video.topic %>
+	  	<br>
+	  	<br>
+	 	<strong>Debate President:</strong>
+	  	<%= @video.president %>
+		</p>
+  	<br>
+  	  	<br>
+<div class = "comments">
+	<h3> <strong>ALL COMMENTS</strong></h3>
+	<% @comments.each do |comment| %>
+		  <p> </p>
+	  <p>
+	    <strong>comment:</strong>
+	    <%= comment.content %>
+	  </p>
+	<% end %>
+</div>
+	<h3>
+	<strong>Leave Your Comment Below:</strong>
+	</h3>
+	  <p> </p>
+	<%= form_for :comment, url: comment_add_path(@video) do |f| %>
+	  <p> </p>
+	  <p>
+	    <%= f.label :content %><br>
+	    <%= f.text_area :content %>
+	  </p>
+
+	  <p>
+	    <%= f.label :gender %><br>
+	    <%= f.text_field :gender %>
+	  </p>
+
+	  <p>
+	    <%= f.label :age %><br>
+	    <%= f.text_field :age %>
+	  </p>
+
+  	  <p>
+	    <%= f.submit %>
+	  </p>
+
+	  <p id="score">
+	    <%= f.label :score %><br>
+	    <!--<%= f.text_field :score %>-->
+	  </p>
+
+	  <div id="idContainer1"> </div>
+
+	  <script>
+	    (function(){
+	                 var container = $$("idContainer1"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
+		         it = new ImageTrans1(container,"score");
+	                 it.load(src);
+	               })()
+	  </script>
+	
+	<% end %>
+
+
+
+	</div>
+	</div>
+
+	</body>
+	</html>

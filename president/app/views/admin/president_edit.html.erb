@@ -1,0 +1,22 @@
+<h1>Add President</h1>
+<%= form_for :president, url: admin_president_update_path(@president), method: :patch do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+	
+  <p>
+    <%= f.label :party %><br>
+    <%= f.text_field :party %>
+  </p>
+ 
+  <p>
+    <%= f.label :wiki %><br>
+    <%= f.text_area :wiki %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<td><%= link_to 'Back', admin_president_list_path%></td>

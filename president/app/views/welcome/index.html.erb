@@ -1,0 +1,124 @@
+
+<html>
+<head>
+   <meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   
+
+	<%= stylesheet_link_tag "welcome" %>
+</head>
+
+<label>Topics</label>
+<%= select_tag :topic, options_for_select(@topics.collect{|c| [c.topic, c.topic]}), prompt: "Select a topic", :onchange => "get_options(this.value)" %>
+
+<label>President1</label>
+<%= select_tag :president1, "<option value=\"-1\">Please select topic</option>".html_safe%>
+<label>President2</label>
+<%= select_tag :president2, "<option value=\"-1\">Please select topic</option>".html_safe%>
+
+<input type="button" value="View" onclick="window.location.href= '/video_view/'+ document.getElementById('president1').options[document.getElementById('president1').selectedIndex].value + '/' + document.getElementById('president2').options[document.getElementById('president2').selectedIndex].value">
+
+<script type="text/javascript">
+  function get_options(value){
+    $.ajax({
+      type: "POST",
+      url:'/welcome/get_options?topic='+value,
+      data:'text',
+      success: function(data){
+        $("#president1").html(data);
+        $("#president2").html(data);
+      }
+    })
+  }
+</script>
+
+
+<div class ='jumbotron'>
+
+  	
+
+    
+
+
+
+<div class="page-wrapper">
+	<div class="summary" id="zen-summary" role="article">
+		<p>This website is a production of Texas A&M University</p>
+			
+	</div>
+
+	<div class="preamble" id="zen-preamble" role="article">
+		<h3>The Debate of Presidents</h3>
+		<p>During presidential elections in the United States, it has become customary for the main candidates to engage in a debate. The topics discussed in the debate are often the most controversial issues of the time, and arguably elections have been nearly decided by these debates. Candidate debates are not constitutionally mandated, but it is now considered a de facto election process. The debates are targeted mainly at undecided voters; those who tend not to be partial to any political ideology or party.</p>		
+	</div>
+	
+	<div class="main supporting" id="zen-supporting" role="main">
+		<div class="explanation" id="zen-explanation" role="article">
+			<h3>Republican or Democratic?</h3>
+			<iframe frameborder='0' width='460' height='390' scrollable='no' src='http://www.c-span.org/video/standalone/?308511-1/2012-presidential-candidates-debate'></iframe>
+			<h3>Which Topic do You Like?</h3>
+		
+			<div class="images">
+				<img src="agriculture.jpg">
+				<img src="economy.jpg">
+				<img src="industry.jpg">
+				<img src="military.jpg">
+				<select>
+  					<option value="volvo">Volvo</option>
+  					<option value="saab">Saab</option>
+  					<option value="mercedes">Mercedes</option>
+  					<option value="audi">Audi</option>
+				</select>	
+			</div>
+			
+			<h3>Which President do You Like?</h3>
+			<div class = "president">
+				<img src="pre1.jpg">
+				<select>
+  					<option value="volvo">Volvo</option>
+  					<option value="saab">Saab</option>
+  					<option value="mercedes">Mercedes</option>
+  					<option value="audi">Audi</option>
+				</select>
+				<img src="pre2.jpg">
+				<select>
+  					<option value="volvo">Volvo</option>
+  					<option value="saab">Saab</option>
+  					<option value="mercedes">Mercedes</option>
+  					<option value="audi">Audi</option>
+				</select>
+			</div>
+			
+			<h3>Recommend Videos</h3>	
+			<% @videos.each do |video| %>
+				<%= button_to video.pic, video_path(video) %>
+			<% end %>
+			
+			<h3>Admin Login</h3>
+			<%= form_for :login, url: admin_login_path do |f|%>
+  			<p>
+    			<label>Username</label><br>
+    			<%= f.text_field :username %><label><%= @usrerr %></label>
+  			</p>
+ 
+ 			<p>
+    			<label>Password</label><br>
+    			<%= f.text_field :password %><label><%= @pswerr %></label>
+  			</p>
+ 
+  			<p>
+   				 <%= f.submit %>
+  			</p>
+			<% end %>
+
+		</div>
+	</div>
+
+
+
+</div>
+</div>
+
+</body>
+
+</html>
+

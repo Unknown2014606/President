@@ -1,0 +1,32 @@
+<h1>Add Video</h1>
+<%= form_for :video, url: admin_video_add_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+	
+  <p>
+    <%= f.label :topic %><br>
+    <%= f.text_field :topic %>
+  </p>
+ 
+  <p>
+    <%= f.label :president %><br>
+    <%= f.text_field :president %>
+  </p>
+	
+  <p>
+    <%= f.label :embed %><br>
+    <%= f.text_area :embed %>
+  </p>
+	
+  <p>
+    <%= f.label :pic %><br>
+    <%= f.text_field :pic %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<td><%= link_to 'Back', admin_home_path%></td>
