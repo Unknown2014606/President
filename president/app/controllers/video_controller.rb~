@@ -8,8 +8,6 @@ class VideoController < ApplicationController
   def video_view2
 		@video1 = Video.find(params[:id1])
 		@video2 = Video.find(params[:id2])
-		@president1 = President.where(name: @video1.president).take
-		@president2 = President.where(name: @video2.president).take
 		@comments1 = @video1.comments
 		@comments2 = @video2.comments
   end

@@ -7,7 +7,8 @@
 	
   <p>
     <%= f.label :party %><br>
-    <%= f.text_field :party %>
+    <%= f.select(:party, [["Republican", "Republican"], ["Democratic", "Democratic"]] ) %>
+  </p>
   </p>
  
   <p>

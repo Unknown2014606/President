@@ -12,7 +12,7 @@
  
   <p>
     <%= f.label :president %><br>
-    <%= f.text_field :president %>
+    <%= f.select(:president, President.select(:name).distinct.collect {|p| [ p.name, p.name]}) %>
   </p>
 	
   <p>

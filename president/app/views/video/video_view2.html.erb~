@@ -5,6 +5,7 @@
   <script src="CJL.0.1.min.js"></script>
   <script src="rotate.js"></script>
   <%= stylesheet_link_tag "video" %>
+  <%= button_to 'back', welcome_path %>
 </head>
 <body background=""> 
   <div id="mainbg">
@@ -27,6 +28,7 @@
       <br>
     <strong>Debate President:</strong>
       <%= @video1.president %>
+	 	  <%= button_to '(WIKI)', 'http://'+@president1.wiki %>
     </p>
   <br>
         <br>
@@ -34,7 +36,7 @@
    <h3> <strong>ALL COMMENTS</strong></h3>
         <% @comments1.each do |comment| %>
         <p>
-          <strong>Content:</strong>
+	        <strong><%= comment.created_at %></strong><br>
           <%= comment.content %>
         </p>
         <% end %>
@@ -48,8 +50,11 @@
           <%= f.text_area :content %>
         </p>
         <p>
-          <%= f.label :gender %><br>
-          <%= f.text_field :gender %>
+    	    <%= f.label :gender %><br>
+    	    <%= f.label :gender, "male", :value => "male"  %>
+    	    <%= f.radio_button :gender, "male" %>
+    	    <%= f.label :gender, "female", :value => "female" %>
+    	    <%= f.radio_button :gender, "female", :checked => true %>
         </p>
         <p>
           <%= f.label :age %><br>
@@ -100,13 +105,14 @@
         <br>
           <strong>Debate President:</strong>
           <%= @video2.president %>
+	 	      <%= button_to '(WIKI)', 'http://'+@president2.wiki %>
         </p>
   <br>
         <br>
   <h3> <strong>ALL COMMENTS</strong></h3>
         <% @comments2.each do |comment| %>
         <p>
-          <strong>Content:</strong>
+	     <strong><%= comment.created_at %></strong><br>
           <%= comment.content %>
         </p>
         <% end %>
@@ -120,8 +126,11 @@
           <%= f.text_area :content %>
         </p>
         <p>
-          <%= f.label :gender %><br>
-          <%= f.text_field :gender %>
+    	    <%= f.label :gender %><br>
+    	    <%= f.label :gender, "male", :value => "male"  %>
+    	    <%= f.radio_button :gender, "male" %>
+    	    <%= f.label :gender, "female", :value => "female" %>
+    	    <%= f.radio_button :gender, "female", :checked => true %>
         </p>
         <p>
           <%= f.label :age %><br>

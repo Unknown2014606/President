@@ -6,6 +6,7 @@
 	   <script src="rotate.js"></script>
 	   <%= stylesheet_link_tag "video" %>
 	   <h2>The Beauty <abbr title="Cascading Style Sheets"></abbr> &nbsp;&nbsp;&nbsp;&nbsp;Debate</h2>
+	   <%= button_to 'back', welcome_path %>
 	</head>
 
 	<body background="">
@@ -27,7 +28,8 @@
 	  	<br>
 	  	<br>
 	 	<strong>Debate President:</strong>
-	  	<%= @video.president %>
+	 	  <%= @video.topic %>
+	 	  <%= button_to '(WIKI)', 'http://'+@president.wiki %>
 		</p>
   	<br>
   	  	<br>
@@ -36,7 +38,7 @@
 	<% @comments.each do |comment| %>
 		  <p> </p>
 	  <p>
-	    <strong>comment:</strong>
+	    <strong><%= comment.created_at %></strong><br>
 	    <%= comment.content %>
 	  </p>
 	<% end %>
@@ -51,12 +53,13 @@
 	    <%= f.label :content %><br>
 	    <%= f.text_area :content %>
 	  </p>
-
 	  <p>
-	    <%= f.label :gender %><br>
-	    <%= f.text_field :gender %>
-	  </p>
-
+    	<%= f.label :gender %><br>
+    	<%= f.label :gender, "male", :value => "male"  %>
+    	<%= f.radio_button :gender, "male" %>
+    	<%= f.label :gender, "female", :value => "female" %>
+    	<%= f.radio_button :gender, "female", :checked => true %>
+    </p>
 	  <p>
 	    <%= f.label :age %><br>
 	    <%= f.text_field :age %>
