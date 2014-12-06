@@ -1,0 +1,23 @@
+<h1>Video</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @video.title %>
+</p>
+ 
+<p>
+  <strong>Topic:</strong>
+  <%= @video.topic %>
+</p>
+
+<p>
+  <strong>President:</strong>
+  <%= @video.president %>
+</p>
+
+<p>
+  <%= @video.embed.html_safe %>
+</p>
+
+
+<td><%= link_to 'Back', admin_video_list_path%></td>
