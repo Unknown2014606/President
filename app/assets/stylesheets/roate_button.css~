@@ -1,0 +1,56 @@
+
+.slideButton{  
+  background-color: hsla(190, 90%, 0%, 1);
+  background-image:url(http://i.imgur.com/FTt4CCI.png);
+  width:101px;
+  height:101px;
+  position:relative;
+  z-index:100
+  border-radius:56px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+}
+.slider{
+  position:absolute;
+  background:url(http://i.imgur.com/tQCNIgo.png);
+  width:101px;
+  height:101px;
+          transition: 0s;
+  -webkit-transition: 0s;
+}
+.pointer{
+  background:url(http://i.imgur.com/SLzrzp6.png);
+  width:101px;
+  height:101px;
+  position:absolute;
+  border-radius:50px;
+          transition: 1.2s;
+  -webkit-transition: 1.2s;
+}
+.panel{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:9px;
+  text-align:center;
+  width:26px;
+  height:26px;
+  top:36px;
+  left:36px;
+  border-radius:30px;
+  position:absolute;
+  line-height:28px;
+  color:#39a;
+  background:#444;
+  box-shadow:inset 0 1px 6px rgba(0,0,0,0.8);
+  border:1px solid #aaa;
+            transition: 1.2s;
+  -webkit-transition: 1.2s;
+}
+.slideButton:hover > .panel{
+  color:#6ef;  
+  transition: 0.2s;
+  background:#445;
+  box-shadow:inset 0 1px 6px rgba(0,0,0,0.4);
+  text-shadow: 0 0 5px #fff;
+}
+

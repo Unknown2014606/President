@@ -37,7 +37,7 @@ var Rotation1 = function(){
   });
 }
 
-var Rotation2 = function(){
+var rotation2 = function(){
   $('.slideButton').each(function(){ 
     var $el = $(this),
         $sl = $el.find('.slider'),

@@ -2,18 +2,20 @@
 	<head>
 	   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 	   <title>President Debate Videos</title>
-	   <script src="CJL.0.1.min.js"></script>
-	   <script src="rotate.js"></script>
+	   <script src="rotate.js"></script>	   
 	   <%= stylesheet_link_tag "video" %>
+
+	  
 	   <h2>The Beauty <abbr title="Cascading Style Sheets"></abbr> &nbsp;&nbsp;&nbsp;&nbsp;Debate</h2>
 	   <!--<%= button_to 'back', welcome_path %>-->
 	   	   	   <a href="#" class="myButton" onclick="window.location.href= '/'">Welcome</a>
 	</head>
+	
+	<body>
+	
 
-	<body background="">
 	<div class="page-wrapper">
-	<div class="main supporting" id="zen-supporting" role="main">
-
+	<div class="main supporting" id="zen-supporting" role="main" style="postion:relative;">
 		<h3>
 		<strong>Debate Video Title:</strong>
 		<%= @video.title %>
@@ -31,15 +33,17 @@
 	 	<strong>Debate President:</strong>
 	 	  <%= @video.president %>
 		</p>
-		 <br>
-      <br>
+
 		    <p>
     <strong>Wiki link:</strong>
     <%=link_to 'wiki', 'http://'+@president.wiki %>
 
     </p>
+      <br>
   	<br>
-  	  	<br>
+
+
+
 
 	<h3>
 	<strong>Leave Your Comment Below:</strong>
@@ -47,55 +51,54 @@
 	  <p> </p>
 	<%= form_for :comment, url: comment_add_path(@video) do |f| %>
 	  <p> </p>
-	  <p>
+
+	<div id="comment"  style="float:left;margin:0 0 0 5px;">
+	  <p> 
 	    <%= f.label :content %><br>
 	    <%= f.text_area :content %>
 	  </p>
 	  <p>
-    	<%= f.label :gender %><br>
-    	<%= f.label :gender, "male", :value => "male"  %>
-    	<%= f.radio_button :gender, "male" %>
-    	<%= f.label :gender, "female", :value => "female" %>
-    	<%= f.radio_button :gender, "female", :checked => true %>
-    </p>
+    	    <%= f.label :gender %><br>
+    	    <%= f.label :gender, "male", :value => "male"  %>
+    	    <%= f.radio_button :gender, "male" %>
+    	    <%= f.label :gender, "female", :value => "female" %>
+    	    <%= f.radio_button :gender, "female", :checked => true %>
+          </p>
 	  <p>
 	    <%= f.label :age %><br>
 	    <%= f.text_field :age %>
 	  </p>
-
-  	  <p>
+	  <p>
 	    <%= f.submit %>
 	  </p>
-
-	  <p id="score">
-	    <%= f.label :score %><br>
-	    <!--<%= f.text_field :score %>-->
-	  </p>
-<div align="center">
-	  <div id="idContainer1"> 
-<style>
-            #idContainer1{border:0px solid #000;width:100px; height:100px; background: center no-repeat;}
-          </style>
+     	</div>
+	
+        <div class="Scores" id="Scores" style=" float:left;margin:0 0 0 5px; ">
+          <strong>Score</strong>
+ 	  <div class="slideButton">
+            <div class="slider"></div>
+            <div class="pointer"></div>
+            <div class="panel"></div>
+	  </div>
 	  <script>
 	    (function(){
-	                 var container = $$("idContainer1"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
-		         it = new ImageTrans1(container,"score");
-	                 it.load(src);
+		         it = new Rotation1();
 	               })()
 	  </script>
 	</div>
+
 	<% end %>
-</div>
-<div class = "comments">
-	<h3> <strong>ALL COMMENTS</strong></h3>
-	<% @comments.each do |comment| %>
+
+        <div class = "comments" style="clear:both;">
+	  <h3> <strong>ALL COMMENTS</strong></h3>
+	  <% @comments.each do |comment| %>
 		  <p> </p>
 	  <p>
 	    <strong><%= comment.created_at %></strong><br>
 	    <%= comment.content %>
 	  </p>
-	<% end %>
-</div>
+	 <% end %>
+        </div>
 
 
 	</div>
