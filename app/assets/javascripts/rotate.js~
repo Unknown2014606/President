@@ -15,7 +15,7 @@ var Rotation1 = function(){
       var getAtan = Math.atan2(mPos.x-rad, mPos.y-rad);    
       s.d = -getAtan/(Math.PI/180) + 180;
       s.p =  Math.round(s.d*100/360);
-      $pa.text(s.p);
+      $pa.text(s.p); 
    }
 
   $el.mousemove(function(e){
@@ -23,8 +23,8 @@ var Rotation1 = function(){
     $el.css({backgroundColor: 'hsla(190, 90%, '+ s.p +'%, 1)'});
     $sl.css({transform:'rotate('+ s.d +'deg)'});
     }).click(function(){
-       s2 = {d:s.d, p:s.p};
-       $po.css({transform:'rotate('+ s.d +'deg)'});
+       s2 = {d:s.d, p:s.p}; //在这个地方添加AJAX 把s.p的值传给contoller，s.p就是最后的值
+       $po.css({transform:'rotate('+ s.d +'deg)'}); 
     }).mouseleave(function(){
        $el.css({backgroundColor: 'hsla(190, 90%, '+ s2.p +'%, 1)'});
        $sl.css({transition:'0.3s',transform:'rotate('+ s2.d +'deg)'});
@@ -37,7 +37,8 @@ var Rotation1 = function(){
   });
 }
 
-var rotation2 = function(){
+//这是第二个视频的评分按钮
+var Rotation2 = function(){
   $('.slideButton').each(function(){ 
     var $el = $(this),
         $sl = $el.find('.slider'),

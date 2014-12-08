@@ -108,9 +108,29 @@
   			<p>
    				 <%= f.submit %>
   			</p>
-			<% end %>
-
-		</div>
+				
+                        <div id="idContainer"> 
+		           <style>
+			      #idContainer{    width: 100px;
+                                                height: 100px;
+                                                position: absolute;
+					 	z-index:1
+					  }
+		           </style>
+                           <strong>Score</strong>
+ 	                   <div class="slideButton">
+                              <div class="slider"></div>
+                              <div class="pointer"></div>
+             		      <div class="panel"></div>
+	  		   </div>
+	                      <script>
+	                        (function(){
+		                     it = new Rotation1();
+	                              })()
+	                      </script>
+	                 </div>
+ 
+                        <% end %>
 	</div>
 
 

@@ -6,7 +6,7 @@ Rails.application.config.assets.precompile += %w(welcome.css)
 Rails.application.config.assets.precompile += %w(admin_home.css)
 Rails.application.config.assets.precompile += %w(admin_pre_list.css)
 Rails.application.config.assets.precompile += %w(admin_video_list.css)
-
+Rails.application.config.assets.precompile += %w(rotate_button.css)
 Rails.application.config.assets.precompile += %w(video.css)
 
 

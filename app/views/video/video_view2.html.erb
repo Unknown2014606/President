@@ -2,7 +2,6 @@
 
 <head>
   <meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
-  <script src="CJL.0.1.min.js"></script>
   <script src="rotate.js"></script>
   <%= stylesheet_link_tag "video" %>
  <!-- <%= button_to 'back', welcome_path %>-->
@@ -63,24 +62,19 @@
           <%= f.submit %>
         </p>
 
-        <p id="score">
-          <%= f.label :score %><br>
-          <!--<%= f.text_field :score %>-->
-        </p>
-        <div align="center">
-        <div id="idContainer1"> 
-          <style>
-            #idContainer1{border:0px solid #000;width:100px; height:100px; background: center no-repeat;}
-          </style>
-          <script>
-            (function(){
-              var container = $$("idContainer1"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
-              it = new ImageTrans1(container,"score");
-              it.load(src);
-            })()
-          </script>
-        </div>
-        </div>
+        <div id="RotateButton1">      
+ 	   <div class="slideButton">
+              <div class="slider"></div>
+              <div class="pointer"></div>
+              <div class="panel"></div>
+	   </div>
+	   <p>Score</p>
+	   <script>
+	      (function(){
+		           it = new Rotation1();
+	                 })()
+	   </script>
+ 	 </div>
         <% end %>
            <h3> <strong>ALL COMMENTS</strong></h3>
         <% @comments1.each do |comment| %>
@@ -145,24 +139,19 @@
           <%= f.submit %>
         </p>
 
-        <p id="score2">
-          <%= f.label :score %><br>
-          <!--<%= f.text_field :score %>-->
-        </p>
-          <div align="center">
-        <div id="idContainer2">
-          <style>
-            #idContainer2{border:0px solid #000;width:100px; height:100px; background: center no-repeat;}
-          </style>
-          <script>
-            (function(){
-              var container = $$("idContainer2"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
-              it = new ImageTrans2(container,"score2");
-              it.load(src);
-            })()
-          </script>
-        </div>
-    </div>
+        <div id="RotateButton2">      
+ 	   <div class="slideButton">
+              <div class="slider"></div>
+              <div class="pointer"></div>
+              <div class="panel"></div>
+	   </div>
+	<p>Score</p>
+	   <script>
+	      (function(){
+		           it = new Rotation2();
+	                 })()
+	   </script>
+ 	 </div>
         <% end %>
  <h3> <strong>ALL COMMENTS</strong></h3>
         <% @comments2.each do |comment| %>

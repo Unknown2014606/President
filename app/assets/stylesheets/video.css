@@ -218,7 +218,7 @@ background-repeat:no-repeat;
 body, .page-wrapper:before, .page-wrapper:after {
     background: #3c1d08 url('whitehouse1.jpg') no-repeat fixed top;
 }
-.page-wrapper, .intro:after, .supporting div, .supporting footer {
+.page-wrapper, .intro:after, .supporting footer {
     background: #fceec6 url('whitehouse_light.jpeg') no-repeat fixed top;
 }
 
@@ -649,9 +649,6 @@ screen and (device-width: 768px), screen and (device-width: 1024px) {
 }
 .requirements h3:after {
     content: ' had crept in';
-}
-.supporting div {
-    padding: 0 0 3em;
 }
 
 .supporting p {
