@@ -6,7 +6,8 @@
 	   <script src="rotate.js"></script>
 	   <%= stylesheet_link_tag "video" %>
 	   <h2>The Beauty <abbr title="Cascading Style Sheets"></abbr> &nbsp;&nbsp;&nbsp;&nbsp;Debate</h2>
-	   <%= button_to 'back', welcome_path %>
+	   <!--<%= button_to 'back', welcome_path %>-->
+	   	   	   <a href="#" class="myButton" onclick="window.location.href= '/'">Welcome</a>
 	</head>
 
 	<body background="">
@@ -29,20 +30,11 @@
 	  	<br>
 	 	<strong>Debate President:</strong>
 	 	  <%= @video.president %>
-	 	  <%= button_to '(WIKI)', 'http://'+@president.wiki %>
+	 	  <%= link_to image_tag('wiki.png', size: "20x20"), 'http://'+@president.wiki %>
 		</p>
   	<br>
   	  	<br>
-<div class = "comments">
-	<h3> <strong>ALL COMMENTS</strong></h3>
-	<% @comments.each do |comment| %>
-		  <p> </p>
-	  <p>
-	    <strong><%= comment.created_at %></strong><br>
-	    <%= comment.content %>
-	  </p>
-	<% end %>
-</div>
+
 	<h3>
 	<strong>Leave Your Comment Below:</strong>
 	</h3>
@@ -61,11 +53,10 @@
     	<%= f.radio_button :gender, "female", :checked => true %>
     </p>
 	  <p>
-	    <%= f.label :age %><br>
-	    <%= f.text_field :age %>
+		<%= f.select(:age, [["under 20 years old", "10"], ["20-30 years old", "20"], ["30-40 years old", "30"], ["40-50 years old", "40"], ["50-60 years old", "50"],  ["over 60 years old", "60"]] ) %>
 	  </p>
 
-  	  <p>
+  	<p>
 	    <%= f.submit %>
 	  </p>
 
@@ -73,9 +64,11 @@
 	    <%= f.label :score %><br>
 	    <!--<%= f.text_field :score %>-->
 	  </p>
-
-	  <div id="idContainer1"> </div>
-
+<div align="center">
+	  <div id="idContainer1"> 
+<style>
+            #idContainer1{border:0px solid #000;width:100px; height:100px; background: center no-repeat;}
+          </style>
 	  <script>
 	    (function(){
 	                 var container = $$("idContainer1"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
@@ -83,9 +76,19 @@
 	                 it.load(src);
 	               })()
 	  </script>
-	
+	</div>
 	<% end %>
-
+</div>
+<div class = "comments">
+	<h3> <strong>ALL COMMENTS</strong></h3>
+	<% @comments.each do |comment| %>
+		  <p> </p>
+	  <p>
+	    <strong><%= comment.created_at %></strong><br>
+	    <%= comment.content %>
+	  </p>
+	<% end %>
+</div>
 
 
 	</div>

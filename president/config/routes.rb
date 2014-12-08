@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
   post 'admin/login', to: 'admin#login'
+  get 'admin/logout', to: 'admin#logout'
 
   get 'admin/home', to:'admin#admin'
   
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   
   get 'admin/video_list', to: 'admin#video_list' 
   
+  delete 'admin/comment_delete/:id', to: 'admin#comment_delete', as: 'admin_comment_delete'
   
   get 'video_view/:id', to: 'video#video_view', as: 'video'
   get 'video_view/:id1/:id2', to: 'video#video_view2', as: 'video2'

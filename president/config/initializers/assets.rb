@@ -3,9 +3,7 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(welcome.css)
-Rails.application.config.assets.precompile += %w(admin_home.css)
-Rails.application.config.assets.precompile += %w(admin_pre_list.css)
-Rails.application.config.assets.precompile += %w(admin_video_list.css)
+Rails.application.config.assets.precompile += %w(admin.css)
 
 Rails.application.config.assets.precompile += %w(video.css)
 
