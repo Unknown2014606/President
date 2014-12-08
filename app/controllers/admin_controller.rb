@@ -1,25 +1,27 @@
 class AdminController < ApplicationController
   before_action :authenticate
-  skip_before_action :authenticate, only: [:admin, :login]
+  skip_before_action :authenticate, only: [:login]  
   
   def login
+    @usrerr = ''
+    @pswerr = ''
     if (defined? params[:login]) && (params[:login][:username] == 'admin') && (defined? params[:login]) && (params[:login][:password] == 'pass')
       session[:user_id] = 'admin'
       redirect_to :action => 'admin'
     else
         if (params[:login][:username] != 'admin')
-          @usrerr = 'Username incorrect.'
+          @usrerr = 'Input Error.'
         end
         if (params[:login][:password] != 'pass')
-          @pswerr = 'Password incorrect.'
+          @pswerr = 'Input Error.'
         end
-      render 'welcome/index'
+      redirect_to :action => 'index', :controller => 'welcome', :usrerr => @usrerr, :pswerr => @pswerr
     end
   end
   
   def logout
     session[:user_id] = nil
-    redirect_to :action => 'admin'
+    redirect_to :action => 'index', :controller => 'welcome'
   end
   
   def admin
@@ -78,6 +80,7 @@ class AdminController < ApplicationController
   public
   def video_edit
     @video = Video.find(params[:id])
+    @comments = Comment.where('video_id ==' + params[:id])
   end
   def video_update
     @video = Video.find(params[:id])
@@ -90,16 +93,24 @@ class AdminController < ApplicationController
   end
   def video_delete
     @video = Video.find(params[:id])
+    sql = "delete from comments where video_id = #{params[:id]};"
+ 		ActiveRecord::Base.connection.update(sql)
     @video.destroy
     redirect_to admin_video_list_path
   end
   def video_list
     @videos = Video.all
   end
+  
+  def comment_delete
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to admin_video_edit_path(@comment.video_id)
+  end
+
 
   private
   def authenticate
-    #if  || session[:user_id].nil? || session[:user_id] != 'admin'
     if session[:user_id].nil?
       redirect_to :action => 'index', :controller => 'welcome'
     end

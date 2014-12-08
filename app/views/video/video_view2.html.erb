@@ -8,80 +8,80 @@
  <!-- <%= button_to 'back', welcome_path %>-->
  	   	   <a href="#" class="myButton" onclick="window.location.href= '/'">Welcome</a>
 </head>
+
 <body background=""> 
-  <div id="mainbg">
-  <div class="main supporting" id="zen-supporting" role="main">
-      <div id = "left">
+	<div id="mainbg">
+		<div class="main supporting" id="zen-supporting" role="main">
+      		<div id = "left">
+        		<h3>
+					<strong>Debate Video Title:</strong>
+            		<%= @video1.title %>
+        		</h3>
+				<br>
+        		<br>
+        		
+        		<p>
+          			<%= @video1.embed.html_safe %>
+        		</p>
+    			
+    			<p>
+     				<strong>Debate Topic:</strong>
+      				<%= @video1.topic %>
+      				<br>
+      				<br>
+    				<strong>Debate President:</strong>
+      				<%= @video1.president %>
+							<%= link_to image_tag('wiki.png', size: "20x20"), 'http://'+@president1.wiki %>
+  				
+  				<br>
+        		<br>
 
-        <h3>
-<strong>Debate Video Title:</strong>
-            <%= @video1.title %>
-        </h3>
-<br>
-        <br>
-        <p>
-          <%= @video1.embed.html_safe %>
-        </p>
-    <p>
-     <strong>Debate Topic:</strong>
-      <%= @video1.topic %>
-      <br>
-      <br>
-    <strong>Debate President:</strong>
-      <%= @video1.president %>
- <br>
-      <br>
-    <strong>Wiki link:</strong>
-    <%=link_to 'wiki', 'http://'+@president1.wiki %>
-    </p>
-  <br>
-        <br>
+				<h3>
+  					<strong>Leave Your Comment Below:</strong>
+  				</h3>
+        		<%= form_for :comment, url: comment_add1_path(@video1, @video2) do |f| %>
+        		
+        		<p>
+         			<%= f.label :content %><br>
+          			<%= f.text_area :content %>
+        		</p>
+        		
+        		<p>
+    	    		<%= f.label :gender %><br>
+    	    		<%= f.label :gender, "male", :value => "male"  %>
+    	    		<%= f.radio_button :gender, "male" %>
+    	    		<%= f.label :gender, "female", :value => "female" %>
+    	    		<%= f.radio_button :gender, "female", :checked => true %>
+        		</p>
+        		
+        		<p>
+						<%= f.select(:age, [["under 20 years old", "10"], ["20-30 years old", "20"], ["30-40 years old", "30"], ["40-50 years old", "40"], ["50-60 years old", "50"],  ["over 60 years old", "60"]] ) %>
+        		</p>
 
+             	<p>
+          			<%= f.submit %>
+        		</p>
 
-
-     <h3>
-  <strong>Leave Your Comment Below:</strong>
-  </h3>
-        <%= form_for :comment, url: comment_add1_path(@video1, @video2) do |f| %>
-        <p>
-          <%= f.label :content %><br>
-          <%= f.text_area :content %>
-        </p>
-        <p>
-    	    <%= f.label :gender %><br>
-    	    <%= f.label :gender, "male", :value => "male"  %>
-    	    <%= f.radio_button :gender, "male" %>
-    	    <%= f.label :gender, "female", :value => "female" %>
-    	    <%= f.radio_button :gender, "female", :checked => true %>
-        </p>
-        <p>
-          <%= f.label :age %><br>
-          <%= f.text_field :age %>
-        </p>
-
-             <p>
-          <%= f.submit %>
-        </p>
-
-        <p id="score">
-          <%= f.label :score %><br>
+        		<p id="score">
+          			<%= f.label :score %><br>
           <!--<%= f.text_field :score %>-->
-        </p>
-        <div align="center">
-        <div id="idContainer1"> 
-          <style>
-            #idContainer1{border:0px solid #000;width:100px; height:100px; background: center no-repeat;}
-          </style>
-          <script>
-            (function(){
-              var container = $$("idContainer1"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
-              it = new ImageTrans1(container,"score");
-              it.load(src);
-            })()
-          </script>
-        </div>
-        </div>
-        <% end %>
+        		</p>
+        		
+        		<div align="center">
+        			<div id="idContainer1"> 
+         	 		<style>
+            			#idContainer1{border:0px solid #000;width:100px; height:100px; background: center no-repeat;}
+          			</style>
+          			<script>
+            		(function(){
+              			var container = $$("idContainer1"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
+              			it = new ImageTrans1(container,"score");
+              			it.load(src);
+            		})()
+          			</script>
+        			</div>
+        		</div>
+        		<% end %>
            <h3> <strong>ALL COMMENTS</strong></h3>
         <% @comments1.each do |comment| %>
         <p>
@@ -111,12 +111,7 @@
         <br>
           <strong>Debate President:</strong>
           <%= @video2.president %>
- <br>
-      <br>
-    <strong>Wiki link:</strong>
-    <%=link_to 'wiki', 'http://'+@president2.wiki %>
-	 	     <!-- <%= button_to '(WIKI)', 'http://'+@president2.wiki %>-->
-    </p>
+          <%= link_to image_tag('wiki.png', size: "20x20"), 'http://'+@president2.wiki %>
   <br>
         <br>
  
@@ -137,8 +132,7 @@
     	    <%= f.radio_button :gender, "female", :checked => true %>
         </p>
         <p>
-          <%= f.label :age %><br>
-          <%= f.text_field :age %>
+				<%= f.select(:age, [["under 20 years old", "10"], ["20-30 years old", "20"], ["30-40 years old", "30"], ["40-50 years old", "40"], ["50-60 years old", "50"],  ["over 60 years old", "60"]] ) %>
         </p>
 
             <p>
@@ -174,7 +168,7 @@
     
       </div>
   </div>
-   </div>
+</div>
 
 </body>
 

@@ -2,16 +2,15 @@
 
 <head>
 	<meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
- 	<%= stylesheet_link_tag "admin_pre_list" %>
+ 	<%= stylesheet_link_tag "admin" %>
 </head>
 
 
-<body>
+<body class="container">
 
-<div class="container">
-	<div class="jumbotron">
-		<h1>Presidents List</h1>
-	</div>
+
+	<h1 class="jumbotron">Presidents List</h1>
+	
 
 
 	<table class="table">
@@ -38,10 +37,11 @@
 	</table>
 
 
-	<div class="label well">
 	
-		<%= link_to 'Back', admin_home_path%>
-	</div>
-</div>
+	
+	<%= link_to admin_home_path, class:"btn btn-primary" do%>
+		<i class="glyphicon glyphicon-circle-arrow-left"> Back</i>
+	<%end%>
+	
 </body>
 </html>

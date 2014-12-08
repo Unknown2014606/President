@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
- 	<%= stylesheet_link_tag "admin_video_list" %>
+ 	<%= stylesheet_link_tag "admin" %>
 </head>
 <body>
 
@@ -33,9 +33,10 @@
   		</thread>
 	</table>
 
-	<div class="label well">	
-		<%= link_to 'Back', admin_home_path%>
-	</div>
+	<%= link_to admin_home_path, class:"btn btn-primary" do%>
+		<i class="glyphicon glyphicon-circle-arrow-left">Back</i>
+	<%end%>
+	
 </div>
 
 </body>
