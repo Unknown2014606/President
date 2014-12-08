@@ -1,0 +1,110 @@
+	<html>
+	<head>
+	   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	   <title>President Debate Videos</title>
+	   <script src="CJL.0.1.min.js"></script>
+	   <script src="rotate.js"></script>
+	   <%= stylesheet_link_tag "video" %>
+	   <h2>The Beauty <abbr title="Cascading Style Sheets"></abbr> &nbsp;&nbsp;&nbsp;&nbsp;Debate</h2>
+	   <!--<%= button_to 'back', welcome_path %>-->
+	   	   	   <a href="#" class="myButton" onclick="window.location.href= '/'">Welcome</a>
+	</head>
+
+	<body background="">
+	<div class="page-wrapper">
+	<div class="main supporting" id="zen-supporting" role="main">
+
+		<h3>
+		<strong>Debate Video Title:</strong>
+		<%= @video.title %>
+		</h3>
+  	<br>
+  	  	<br>
+		<p>
+	  		<%= @video.embed.html_safe %>
+		</p>
+		<div style = "float:left">
+		<p>
+	 	 <strong>Debate Topic:</strong>
+	  	<%= @video.topic %>
+	  	<br>
+	  	<br>
+	 	<strong>Debate President:</strong>
+	 	  <%= @video.president %>
+
+    </p>
+
+		</div>
+
+		<div style = "float: left;">
+		<p> <strong>Score</strong></p>
+		  <br>
+  	<br>
+		</div>
+
+		<div style = "float: left;">
+
+		        <div id="RotateButton">      
+ 	   <div class="slideButton">
+              <div class="slider"></div>
+              <div class="pointer"></div>
+              <div class="panel"></div>
+	   </div>
+	
+	   <script>
+	      (function(){
+		           it = new Rotation1();
+	                 })()
+	   </script>
+ 	 </div>
+ 	 </div>
+<br>
+	  	<br>
+	  	<br>
+	  	<br>
+      <br>
+  	<br>
+	<h3>
+	<strong>Leave Your Comment Below:</strong>
+	</h3>
+	  <p> </p>
+	<%= form_for :comment, url: comment_add_path(@video) do |f| %>
+	  <p> </p>
+	  <p>
+	    <%= f.label :content %><br>
+	    <%= f.text_area :content %>
+	  </p>
+	  <p>
+    	<%= f.label :gender %><br>
+    	<%= f.label :gender, "male", :value => "male"  %>
+    	<%= f.radio_button :gender, "male" %>
+    	<%= f.label :gender, "female", :value => "female" %>
+    	<%= f.radio_button :gender, "female", :checked => true %>
+    </p>
+	  <p>
+		<%= f.select(:age, [["under 20 years old", "10"], ["20-30 years old", "20"], ["30-40 years old", "30"], ["40-50 years old", "40"], ["50-60 years old", "50"],  ["over 60 years old", "60"]] ) %>
+	  </p>
+
+  	<p>
+	    <%= f.submit %>
+	  </p>
+
+	<% end %>
+
+<div class = "comments">
+	<h3> <strong>ALL COMMENTS</strong></h3>
+	<% @comments.each do |comment| %>
+		  <p> </p>
+	  <p>
+	    <strong><%= comment.created_at %></strong><br>
+	    <%= comment.content %>
+	  </p>
+	<% end %>
+</div>
+
+
+	</div>
+	</div>
+
+	</body>
+	</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+   <meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <%= stylesheet_link_tag "admin" %>
+</head>
+
+<body>
+
+<div class="container">
+
+	<div class = "jumbotron">
+		<h2>Admin Home</h2>
+	</div>
+
+	<div class="row">
+    	<div class="col-md-6">
+        	<div class="thumbnail">
+        		<!--
+				<%= link_to image_tag("party.jpg", alt: "Presidents") %>
+				-->
+				<h3 class="page-header">Presidents</h3>
+				
+				
+				<%=link_to admin_president_new_path, class:"btn btn-primary" do%>
+					<i class="glyphicon glyphicon-plus">Add</i>
+				<%end%>
+								
+				
+				<%=link_to admin_president_list_path, class:"btn btn-primary" do%>
+  					<i class="glyphicon glyphicon-th-list">List</i>
+  				<% end %>
+            </div>    
+        </div>
+        <div class="col-md-6">
+        	<div class="thumbnail">
+            	<h3 class="page-header">Videos</h3>
+				
+				
+				<%=link_to admin_video_new_path, class:"btn btn-primary" do%>
+					<i class="glyphicon glyphicon-plus">Add</i>
+				<%end%>
+								
+				
+				<%=link_to admin_video_list_path, class:"btn btn-primary" do%>
+  					<i class="glyphicon glyphicon-th-list">List</i>
+  				<% end %>
+				
+            </div>
+        </div>
+				
+				<%= link_to admin_logout_path, class:"btn btn-primary" do%>
+					<i class="glyphicon glyphicon-circle-arrow-left"> Logout</i>
+				<%end%>
+
+					
+
+        <!--
+        <div class="col-md-4">
+            <div class="thumbnail">
+            	<img src="http://goo.gl/0Kd7UO">
+            </div>
+        </div>
+        -->
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
