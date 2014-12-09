@@ -1,0 +1,146 @@
+<html>
+
+<head>
+   <meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<%= stylesheet_link_tag "welcome" %>
+</head>
+
+
+<body>
+
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+      		<a class="navbar-brand">The Debate of Presidents</a>
+    	</div>
+				<%= form_for :login, url: admin_login_path, :class => "form-inline"  do |f|%>    	
+    	
+  			
+    	<ul class="nav navbar-nav">
+
+        <li class="active"><a>ADMIN LOGIN &nbsp;&nbsp;|</a></li>       		
+        	
+				<li class="active"><a> UserName</a></li>
+        <li>	
+    			<%= f.text_field :username, :class=>"form-control",:placeholder=>"Username#{@usrerr}",:style=>"height:50px;" %>
+				</li>
+				
+				<li class="active"><a> PASSWORD</a></li>
+				<li>
+    			<%= f.password_field :password, :class=>"form-control",:placeholder=>"Password#{@pswerr}",:style=>"height:50px;" %>
+				</li>
+				
+  		</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<%= f.submit "Login", :class=>"btn btn-default",:style=>"height:50px; margin-right:50px;"   %>
+			</ul>
+	
+	
+		<% end %>
+		
+	</div>
+</nav>
+
+
+
+
+<script type="text/javascript">
+  function get_options(value){
+    $.ajax({
+      type: "POST",
+      url:'/welcome/get_options?topic='+value,
+      data:'text',
+      success: function(data){
+        $("#president1").html(data);
+        $("#president2").html(data);
+      }
+    })
+  }
+</script>
+
+<!-- -->
+<div class="main supporting" id="zen-supporting" role="main">
+	<div class="recommanded jumbotron">
+		<h3>Recommend Videos</h3>
+		<% @comments.each do |v| %>
+		<%= link_to image_tag(@videos.find(v[0]).pic, :class => "container"), video_path(@videos.find(v[0])) %> <br>
+	
+		<% end %>		
+	</div>
+</div>
+
+
+
+<div class="page-wrapper">
+	<div class="summary" id="zen-summary" role="article">
+		<p>This website is a production of Texas A&M University</p>
+			
+	</div>
+
+	<div class="main supporting" id="zen-supporting" role="main">
+		<div class="explanation" id="zen-explanation" role="article">
+			
+			
+	    <h3 class="active">Please Select One Topic You Like</h3>        		
+	    <div class="styled-select">
+	    <%= select_tag :topic, options_for_select(@topics.collect{|c| [c.topic, c.topic]}), prompt: " Please select a topic", :onchange => "get_options(this.value)" , :class=>"form-control", :style=>"height:50px;"%>
+			</div>
+        	
+	    <h3 class="active">Please Select The First President</h3>        		
+	    <div class="styled-select">
+				<%= select_tag :president1, "<option value=\"-1\"> Please select one president</option>".html_safe, :class=>"form-control", :style=>"height:50px;"%>
+			</div>
+			
+			<h3 class="active">Please Select The Second President</h3>
+			<div class="styled-select">	
+			<%= select_tag :president2, "<option value=\"-1\"> Please select another president</option>".html_safe, :class=>"form-control", :style=>"height:50px;"%>
+			</div>
+			<br>
+
+
+			<input class="viewButton2" type="button" value="View Videos" onclick="checkroute()"/>	<br><br>
+			
+			
+			<script type="text/javascript">
+        		function checkroute() {
+        		var video1 = document.getElementById('president1').options[document.getElementById('president1').selectedIndex].value;
+        		var video2 = document.getElementById('president2').options[document.getElementById('president2').selectedIndex].value;
+        		var path;
+				if (video1 == video2 && video1 > 0) {
+        			path = '/video_view/'+video1;
+        			window.location.href = path;
+        		}
+        		else if (video1 > 0 && video2 > 0){
+        			path =  '/video_view/'+video1+'/'+video2;
+        			window.location.href = path;
+          		}
+          		else {
+        			alert("Please choose topic and president");
+        		}
+        	}
+			</script>
+			
+			
+			
+			
+			<h3>Republican or Democratic?</h3>
+			<div id="banner">
+				<div><a href='http://www.svgop.com/files/Differences%20Between%20Republicans%20and%20Democrats.pdf' target=_blank> <img src="http://1.bp.blogspot.com/-WuxMlJySQ4w/TfqfME7-7WI/AAAAAAAACag/YUQcrbNtbpI/s1600/morin.jpg" alt="Skyline 1" height='270' width='460'/> </a></div>
+				<div><a href='http://www.svgop.com/files/Differences%20Between%20Republicans%20and%20Democrats.pdf' target=_blank>  <img src="https://www.multistate.com/insider/wp-content/uploads/2012/11/republican-democrat-battle.jpg" alt="Skyline 3" height='270' width='450'> </a></div>
+				
+			</div>
+			
+		</div>
+	</div>
+
+</div>
+
+
+
+
+</body>
+
+</html>
+

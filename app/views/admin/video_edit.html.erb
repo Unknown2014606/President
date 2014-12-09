@@ -1,0 +1,64 @@
+<html>
+
+<head>
+	<meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+ 	<%= stylesheet_link_tag "admin" %>
+</head>
+
+<body class="container">
+
+
+<h1 class ="jumbotron">Edit Video</h1>
+
+<%= form_for :video, url: admin_video_update_path(@video), method: :patch do |f| %>
+  	<p>
+    	<%= f.label :title %><br>
+    	<%= f.text_field :title %>
+  	</p>
+	
+  	<p>
+    	<%= f.label :topic %><br>
+    	<%= f.text_field :topic %>
+  	</p>
+ 
+  	<div class="btn-group">
+    	<%= f.label :president %><br>
+    	<%= f.select(:president, President.select(:name).distinct.collect {|p| [ p.name, p.name]},   {}, {class: "form-control"}) %>
+  	</div>
+	
+  	<p>
+    	<%= f.label :pic %><br>
+    	<%= f.text_field :pic %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :embed %><br>
+    	<%= f.text_area :embed, :cols=>"100", :rows=>"10" %>
+  	</p>
+	
+  	
+ 
+  	<p>
+    	<%= f.submit %>
+  	</p>
+	<% end %>
+
+
+	<%= link_to admin_video_list_path, class:"btn btn-primary" do %>
+		<i class="glyphicon glyphicon-circle-arrow-left">Back</i>
+	<%end%>
+	
+<h2>Comment Management</h2>
+<table class="table">
+	<% @comments.each do |c| %>
+	<tr>
+			<td><%= c.created_at %></td>
+			<td><%= c.content %></td>
+	<td><%= link_to 'Delete', admin_comment_delete_path(c), method: :delete %></td>
+	</tr>
+	<% end %>
+</table>	
+	
+</body>
+</html>
+

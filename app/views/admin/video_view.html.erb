@@ -1,0 +1,38 @@
+<html>
+<head>
+   <meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <%= stylesheet_link_tag "admin" %>
+</head>
+
+
+<body class="container">
+
+	<h1 class="jumbotron">Video</h1>
+
+	<p>
+  		<strong>Title:</strong>
+  		<%= @video.title %>
+	</p>
+ 
+	<p>
+  		<strong>Topic:</strong>
+  		<%= @video.topic %>
+	</p>
+
+	<p>
+  		<strong>President:</strong>
+  		<%= @video.president %>
+	</p>
+
+	<p>
+  		<%= @video.embed.html_safe %>
+	</p>
+
+
+
+	<%= link_to admin_video_list_path, class:"btn btn-primary" do %>
+		<i class="glyphicon glyphicon-circle-arrow-left">Back</i>
+	<%end%>
+
+</body>
+</html>

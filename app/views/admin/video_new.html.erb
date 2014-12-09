@@ -1,0 +1,50 @@
+<html>
+<head>
+	<meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+ 	<%= stylesheet_link_tag "admin" %>
+</head>
+
+
+<body class="container">
+
+<h1 class="jumbotron">Add Video</h1>
+
+<%= form_for :video, url: admin_video_add_path do |f| %>
+  	<p>
+    	<%= f.label :title %><br>
+    	<%= f.text_field :title %>
+  	</p>
+	
+  	<p>
+    	<%= f.label :topic %><br>
+    	<%= f.text_field :topic %>
+  	</p>
+ 
+  	<div class="btn-group">
+    	<%= f.label :president %><br>
+    	<%= f.select(:president, President.select(:name).distinct.collect {|p| [ p.name, p.name]}, {}, {class: "form-control"}   ) %>
+  	</div>
+	
+  	<p>
+    	<%= f.label :pic %><br>
+    	<%= f.text_field :pic %>
+  	</p>
+ 
+  	<p>
+    	<%= f.label :embed %><br>
+    	<%= f.text_area :embed, :cols=>"100",:rows=>"10" %>
+  	</p>
+  	
+  	<p>
+   		<%= f.submit %>
+  	</p>
+	<% end %>
+	
+	<%= link_to admin_home_path, class:"btn btn-primary" do %>
+		<i class="glyphicon glyphicon-circle-arrow-left">Back</i>
+	<%end%>
+
+
+</body>
+</html>
+
