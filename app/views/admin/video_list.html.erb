@@ -1,0 +1,43 @@
+<html>
+<head>
+	<meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+ 	<%= stylesheet_link_tag "admin" %>
+</head>
+<body>
+
+<div class="container">
+
+	<div class="jumbotron">	
+		<h1>Videos List</h1>
+	</div>
+	
+	<table class="table">
+  		<thread>
+  			<tr>
+    			<th>Title</th>
+    			<th>Topic</th>
+				<th>President</th>
+  			</tr>
+ 
+  			<% @videos.each do |video| %>
+    		<tr>
+      			<td><%= video.title %></td>
+      			<td><%= video.topic %></td>
+				<td><%= video.president %></td>
+				<td><%= link_to 'Show', admin_video_path(video)%></td>
+				<td><%= link_to 'Edit', admin_video_edit_path(video)%></td>
+				<td><%= link_to 'Destroy', admin_video_delete_path(video),
+			                    method: :delete %></td>
+    		</tr>
+  			<% end %>
+  		</thread>
+	</table>
+
+	<%= link_to admin_home_path, class:"btn btn-primary" do%>
+		<i class="glyphicon glyphicon-circle-arrow-left">Back</i>
+	<%end%>
+	
+</div>
+
+</body>
+</html>

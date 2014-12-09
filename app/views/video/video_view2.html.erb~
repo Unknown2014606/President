@@ -1,0 +1,189 @@
+<html>
+
+<head>
+  <meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <script src="CJL.0.1.min.js"></script>
+  <script src="rotate.js"></script>
+  <%= stylesheet_link_tag "video" %>
+ 	   	   <a href="#" class="myButton" onclick="window.location.href= '/'">Back</a>
+</head>
+
+<body background=""> 
+	<div id="mainbg">
+		<div class="main supporting" id="zen-supporting" role="main">
+      		<div id = "left">
+        		<h3>
+					<strong>Debate Video Title:</strong>
+            		<%= @video1.title %>
+        		</h3>
+				<br>
+        		<br>
+        		
+        		<p>
+          			<%= @video1.embed.html_safe %>
+        		</p>
+    			
+    			<p>
+     				<strong>Debate Topic:</strong>
+      				<%= @video1.topic %>
+      				<br>
+      				<br>
+    				<strong>Debate President:</strong>
+      				<%= @video1.president %>
+							<%= link_to image_tag('wiki.png', size: "20x20"), 'http://'+@president1.wiki %>
+  				
+  				<br>
+        		<br>
+
+				<h3>
+  					<strong>Leave Your Comment Below:</strong>
+  				</h3>
+			<div style="float:left">
+        		<%= form_for :comment, url: comment_add1_path(@video1, @video2) do |f| %>
+        		
+        		<p>
+         			<%= f.label :content %><br>
+          			<%= f.text_area :content %>
+        		</p>
+        		
+        		<p>
+    	    		<%= f.label :gender %><br>
+    	    		<%= f.label :gender, "male", :value => "male"  %>
+    	    		<%= f.radio_button :gender, "male" %>
+    	    		<%= f.label :gender, "female", :value => "female" %>
+    	    		<%= f.radio_button :gender, "female", :checked => true %>
+        		</p>
+        		
+        		<p>
+						<%= f.select(:age, [["under 20 years old", "10"], ["20-30 years old", "20"], ["30-40 years old", "30"], ["40-50 years old", "40"], ["50-60 years old", "50"],  ["over 60 years old", "60"]] ) %>
+        		</p>
+
+             	<p>
+          			<%= f.submit %>
+        		</p>
+		</div>
+		<div style="float:left">
+        			  <div style="visibility:hidden;">  <%= f.text_field :score %></div>
+        		<p id="score">
+        		<%= f.label :score %>
+        		</p>
+        		
+        		<div align="center">
+        			<div id="idContainer1"> 
+         	 		<style>
+            			#idContainer1{border:0px solid #000;width:128px; height:128px; background: center no-repeat;  border-radius:56px;
+  overflow:hidden; cursor:pointer;}
+          			</style>
+          			<script>
+            		(function(){
+              			var container = $$("idContainer1"), src = "http://www.mricons.com/store/png/49555_27013_Rotate_128x128_rotate_icon.png",
+              			it = new ImageTrans1(container,"score");
+              			it.load(src);
+            		})()
+          			</script>
+        			</div>
+        		</div>
+        		<% end %>
+		</div>
+	<div style="clear:both">
+           <h3> <strong>ALL COMMENTS</strong></h3>
+        <% @comments1.each do |comment| %>
+        <p>
+	        <strong><%= comment.created_at %></strong><br>
+          <%= comment.content %>
+          [score: <%= comment.score %>]
+        </p>
+        <% end %>
+       </div>
+      </div>
+    </div>
+	
+  <div class="main supporting" id="zen-supporting" role="main">
+      <div id = "right">
+        <h3>
+            <strong>Debate Video Title:</strong>
+            <%= @video2.title %>
+        </h3>
+<br>
+        <br>
+        <p>
+          <%= @video2.embed.html_safe %>
+        </p>
+
+        <p>
+          <strong>Debate Topic:</strong>
+          <%= @video2.topic %>
+       <br>
+        <br>
+          <strong>Debate President:</strong>
+          <%= @video2.president %>
+          <%= link_to image_tag('wiki.png', size: "20x20"), 'http://'+@president2.wiki %>
+  <br>
+        <br>
+ 
+
+     <h3>
+  <strong>Leave Your Comment Below:</strong>
+  </h3>
+	<div style="float:left">
+        <%= form_for :comment2, url: comment_add2_path(@video1, @video2) do |f| %>
+        <p>
+          <%= f.label :content %><br>
+          <%= f.text_area :content %>
+        </p>
+        <p>
+    	    <%= f.label :gender %><br>
+    	    <%= f.label :gender, "male", :value => "male"  %>
+    	    <%= f.radio_button :gender, "male" %>
+    	    <%= f.label :gender, "female", :value => "female" %>
+    	    <%= f.radio_button :gender, "female", :checked => true %>
+        </p>
+        <p>
+				<%= f.select(:age, [["under 20 years old", "10"], ["20-30 years old", "20"], ["30-40 years old", "30"], ["40-50 years old", "40"], ["50-60 years old", "50"],  ["over 60 years old", "60"]] ) %>
+        </p>
+
+            <p>
+          <%= f.submit :value => "Save Comment" %>
+        </p>
+</div>
+	<div style="float:left">
+           <div style="visibility:hidden;">  <%= f.text_field :score %></div>
+
+        <p id="score2">
+    	    <%= f.label :score %>
+        </p>
+          <div align="center">
+        <div id="idContainer2">
+          <style>
+            #idContainer2{border:0px solid #000;width:128px; height:128px; background: center no-repeat;  border-radius:65px;
+  overflow:hidden; cursor:pointer;}
+          </style>
+          <script>
+            (function(){
+              var container = $$("idContainer2"), src ="http://imageshack.com/a/img538/6042/ERrlXE.png",
+              it = new ImageTrans2(container,"score2");
+              it.load(src);
+            })()
+          </script>
+        </div>
+    </div>
+	</div>
+        <% end %>
+<div style="clear:both">
+ <h3> <strong>ALL COMMENTS</strong></h3>
+        <% @comments2.each do |comment| %>
+        <p>
+	        <strong><%= comment.created_at %></strong><br>
+          <%= comment.content %>
+          [score: <%= comment.score %>]
+        </p>
+        <% end %>
+    </div>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>
+

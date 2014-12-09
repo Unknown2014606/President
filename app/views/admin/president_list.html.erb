@@ -1,0 +1,47 @@
+<html>
+
+<head>
+	<meta name="Unknown Team" http-equiv="Content-Type" content="text/html; charset=gb2312" />
+ 	<%= stylesheet_link_tag "admin" %>
+</head>
+
+
+<body class="container">
+
+
+	<h1 class="jumbotron">Presidents List</h1>
+	
+
+
+	<table class="table">
+  		
+ 		<thread>
+			<tr>
+	            <th>Name</th>
+	            <th>Party</th>
+	            <th>Wiki</th>
+	        </tr> 		
+ 		
+  			<% @presidents.each do |president| %>
+    		<tr>
+      		<td><%= president.name %></td>
+      		<td><%= president.party %></td>
+			<td><%= president.wiki %></td>
+			<td><%= link_to 'Show', admin_president_path(president)%></td>
+			<td><%= link_to 'Edit', admin_president_edit_path(president)%></td>
+			<td><%= link_to 'Destroy', admin_president_delete_path(president),
+			                    method: :delete %></td>
+    		</tr>
+  			<% end %>
+  		</thread>
+	</table>
+
+
+	
+	
+	<%= link_to admin_home_path, class:"btn btn-primary" do%>
+		<i class="glyphicon glyphicon-circle-arrow-left"> Back</i>
+	<%end%>
+	
+</body>
+</html>
