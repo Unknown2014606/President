@@ -66,7 +66,7 @@
 		<h3>Recommend Videos</h3>
 		<% @comments.each do |v| %>
 		<%= link_to image_tag(@videos.find(v[0]).pic, :class => "container"), video_path(@videos.find(v[0])) %> <br>
-		<%= @videos.find(v[0]).title %><br><br>
+		<p style="text-align:center; font-size: 12pt; font-family: Georgia; color: black;"><%= @videos.find(v[0]).title %></p><br><br>
 		<% end %>		
 	</div>
 </div>
