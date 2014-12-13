@@ -13,6 +13,14 @@ group :production do
    gem 'pg'
 end
 
+# Cucumber
+group :test do
+  gem "rspec-rails"
+  gem 'shoulda-matchers'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Bootstrap 
