@@ -46,4 +46,4 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-ruby "ruby 1.9.3p484"
+ruby "1.9.3"
