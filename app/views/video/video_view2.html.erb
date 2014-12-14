@@ -42,7 +42,7 @@
         		<%= form_for :comment, url: comment_add1_path(@video1, @video2) do |f| %>
         		
         		<p>
-         			<%= f.label :content %><br>
+         			<%= f.label :comment %><br>
           			<%= f.text_area :content %>
         		</p>
         		
@@ -71,7 +71,7 @@
         		<div align="center">
         			<div id="idContainer1"> 
          	 		<style>
-            			#idContainer1{border:0px solid #000;width:128px; height:128px; background: center no-repeat;  border-radius:56px;
+            			#idContainer1{border:0px solid #000;width:128px; height:118px; background: center no-repeat;  border-radius:56px;
   overflow:hidden; cursor:pointer;}
           			</style>
           			<script>
@@ -83,6 +83,7 @@
           			</script>
         			</div>
         		</div>
+			<p>Score Range: 1-100</p>
         		<% end %>
 		</div>
 	<div style="clear:both">
@@ -128,7 +129,7 @@
 	<div style="float:left">
         <%= form_for :comment2, url: comment_add2_path(@video1, @video2) do |f| %>
         <p>
-          <%= f.label :content %><br>
+          <%= f.label :conmment %><br>
           <%= f.text_area :content %>
         </p>
         <p>
@@ -155,7 +156,7 @@
           <div align="center">
         <div id="idContainer2">
           <style>
-            #idContainer2{border:0px solid #000;width:128px; height:128px; background: center no-repeat;  border-radius:65px;
+            #idContainer2{border:0px solid #000;width:128px; height:118px; background: center no-repeat;  border-radius:65px;
   overflow:hidden; cursor:pointer;}
           </style>
           <script>
@@ -167,6 +168,7 @@
           </script>
         </div>
     </div>
+	<p>Score Range: 1-100</p>
 	</div>
         <% end %>
 <div style="clear:both">

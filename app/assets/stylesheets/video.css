@@ -216,10 +216,10 @@ background-repeat:no-repeat;
 */
 
 body, .page-wrapper:before, .page-wrapper:after {
-    background: #3c1d08 url('whitehouse1.jpg') no-repeat fixed top;
+    background: #3c1d08 url('whitehouse.jpg') no-repeat fixed top;
 }
 .page-wrapper, .intro:after, .supporting div, .supporting footer {
-    background: #fceec6 url('whitehouse_light.jpeg') no-repeat fixed top;
+    background: #fceec6 url('whitehouse.jpeg') no-repeat fixed top;
 }
 
 

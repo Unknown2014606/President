@@ -5,7 +5,7 @@
 	   <script src="CJL.0.1.min.js"></script>
 	   <script src="rotate.js"></script>
 	   <%= stylesheet_link_tag "video" %>
-	   <h2>The Beauty <abbr title="Cascading Style Sheets"></abbr> &nbsp;&nbsp;&nbsp;&nbsp;Debate</h2>
+	   <h2> &nbsp;&nbsp;The Mashup <abbr title="Cascading Style Sheets"></abbr> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debate</h2>
 	   	   	   <a href="#" class="myButton" onclick="window.location.href= '/'">Back</a>
 	</head>
 
@@ -42,7 +42,7 @@
 	<%= form_for :comment, url: comment_add_path(@video) do |f| %>
 	  <p> </p>
 	  <p>
-	    <%= f.label :content %><br>
+	    <%= f.label :comment %><br>
 	    <%= f.text_area :content %>
 	  </p>
 	  <p>
@@ -67,7 +67,7 @@
 
 	  <div id="idContainer1"> 
            <style>
-            #idContainer1{border:0px solid #000;width:128px; height:128px; background: center no-repeat;  border-radius:56px;
+            #idContainer1{border:0px solid #000;width:128px; height:118px; background: center no-repeat;  border-radius:56px;
   overflow:hidden; cursor:pointer;}
           </style>
 	  <script>
@@ -79,6 +79,7 @@
 	  </script>
 
 	</div>
+	<p>Score Range: 1-100</p>
 	<% end %>
 	</div>
 

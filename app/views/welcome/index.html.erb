@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-      		<a class="navbar-brand">The Debate of Presidents</a>
+      		<a class="navbar-brand">Presidential Debate Mashup</a>
     	</div>
 				<%= form_for :login, url: admin_login_path, :class => "form-inline"  do |f|%>    	
     	
@@ -66,7 +66,8 @@
 		<h3>Recommend Videos</h3>
 		<% @comments.each do |v| %>
 		<%= link_to image_tag(@videos.find(v[0]).pic, :class => "container"), video_path(@videos.find(v[0])) %> <br>
-		<p style="text-align:center; font-size: 12pt; font-family: Georgia; color: black;"><%= @videos.find(v[0]).title %></p><br><br>
+		<p style="text-align:center; font-size:12pt; font-family:Georgia;color:black; "> <%=@videos.find(v[0]).title%></p>
+		<br><br>
 		<% end %>		
 	</div>
 </div>
@@ -100,7 +101,7 @@
 			<br>
 
 
-			<input class="viewButton2" type="button" value="View Videos" id = "view button" onclick="checkroute()"/>	<br><br>
+			<input class="viewButton2" type="button" value="View Videos" onclick="checkroute()"/>	<br><br>
 			
 			
 			<script type="text/javascript">
