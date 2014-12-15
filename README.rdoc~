@@ -11,11 +11,9 @@ Before you start running the server, please read the following tips:
 
 Usage:
 
-In project dir:
+1. run $ bundle install in the project dir.
 
-1. run $ bundle install 
-
-2. run $ rails server 
+2. run $ rails server in the project dir.
 
 
 Please feel free to use a different markup language if you do not plan to run
