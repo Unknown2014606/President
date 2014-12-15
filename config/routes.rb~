@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+
+ # You can have the root of your site routed with "root"
+  root 'welcome#index', as: 'welcome'
+  #root to: 'welcome#index'
+  #root to:'pages#index'
+  get 'pages/index'
+
   get 'welcome/index'
   post 'admin/login', to: 'admin#login'
+  get 'admin/logout', to: 'admin#logout'
 
   get 'admin/home', to:'admin#admin'
   
@@ -26,22 +34,22 @@ Rails.application.routes.draw do
   
   get 'admin/video_list', to: 'admin#video_list' 
   
+  delete 'admin/comment_delete/:id', to: 'admin#comment_delete', as: 'admin_comment_delete'
   
   get 'video_view/:id', to: 'video#video_view', as: 'video'
   get 'video_view/:id1/:id2', to: 'video#video_view2', as: 'video2'
   post 'video/comment_add1/:id1/:id2', to: 'video#comment_add1', as: 'comment_add1'
   post 'video/comment_add2/:id1/:id2', to: 'video#comment_add2', as: 'comment_add2'
   
-  get '/video/:video_id/comment', to: 'video#comment_list', as: 'comment_list'
+  get 'video/:video_id/comment', to: 'video#comment_list', as: 'comment_list'
   post 'video/:video_id/comment_add', to: 'video#comment_add', as: 'comment_add'
 
-  post '/welcome/get_options', to: 'welcome#get_options'
+  post 'welcome/get_options', to: 'welcome#get_options'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'welcome#index', as: 'welcome'
+ 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

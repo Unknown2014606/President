@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+ # You can have the root of your site routed with "root"
+  root 'welcome#index', as: 'welcome'
+
+  root to:'pages#index'
+  get 'pages/index'
+
   get 'welcome/index'
   post 'admin/login', to: 'admin#login'
   get 'admin/logout', to: 'admin#logout'
@@ -42,8 +49,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'welcome#index', as: 'welcome'
+ 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -5,8 +5,7 @@
   <script src="CJL.0.1.min.js"></script>
   <script src="rotate.js"></script>
   <%= stylesheet_link_tag "video" %>
- <!-- <%= button_to 'back', welcome_path %>-->
- 	   	   <a href="#" class="myButton" onclick="window.location.href= '/'">Welcome</a>
+ 	   	   <a href="#" class="myButton" onclick="window.location.href= '/'">Back</a>
 </head>
 
 <body background=""> 
@@ -39,10 +38,11 @@
 				<h3>
   					<strong>Leave Your Comment Below:</strong>
   				</h3>
+			<div style="float:left">
         		<%= form_for :comment, url: comment_add1_path(@video1, @video2) do |f| %>
         		
         		<p>
-         			<%= f.label :content %><br>
+         			<%= f.label :comment %><br>
           			<%= f.text_area :content %>
         		</p>
         		
@@ -61,37 +61,44 @@
              	<p>
           			<%= f.submit %>
         		</p>
-
+		</div>
+		<div style="float:left">
+        			  <div style="visibility:hidden;">  <%= f.text_field :score %></div>
         		<p id="score">
-          			<%= f.label :score %><br>
-          <!--<%= f.text_field :score %>-->
+        		<%= f.label :score %>
         		</p>
         		
         		<div align="center">
         			<div id="idContainer1"> 
          	 		<style>
-            			#idContainer1{border:0px solid #000;width:100px; height:100px; background: center no-repeat;}
+            			#idContainer1{border:0px solid #000;width:128px; height:118px; background: center no-repeat;  border-radius:56px;
+  overflow:hidden; cursor:pointer;}
           			</style>
           			<script>
             		(function(){
-              			var container = $$("idContainer1"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
+              			var container = $$("idContainer1"), src = "http://imageshack.com/a/img538/6042/ERrlXE.png",
               			it = new ImageTrans1(container,"score");
               			it.load(src);
             		})()
           			</script>
         			</div>
         		</div>
+			<p>Score Range: 1-100</p>
         		<% end %>
+		</div>
+	<div style="clear:both">
            <h3> <strong>ALL COMMENTS</strong></h3>
         <% @comments1.each do |comment| %>
         <p>
 	        <strong><%= comment.created_at %></strong><br>
           <%= comment.content %>
+          [score: <%= comment.score %>]
         </p>
         <% end %>
+       </div>
       </div>
     </div>
-
+	
   <div class="main supporting" id="zen-supporting" role="main">
       <div id = "right">
         <h3>
@@ -119,9 +126,10 @@
      <h3>
   <strong>Leave Your Comment Below:</strong>
   </h3>
-        <%= form_for :comment, url: comment_add2_path(@video1, @video2) do |f| %>
+	<div style="float:left">
+        <%= form_for :comment2, url: comment_add2_path(@video1, @video2) do |f| %>
         <p>
-          <%= f.label :content %><br>
+          <%= f.label :conmment %><br>
           <%= f.text_area :content %>
         </p>
         <p>
@@ -136,36 +144,43 @@
         </p>
 
             <p>
-          <%= f.submit %>
+          <%= f.submit :value => "Save Comment" %>
         </p>
+</div>
+	<div style="float:left">
+           <div style="visibility:hidden;">  <%= f.text_field :score %></div>
 
         <p id="score2">
-          <%= f.label :score %><br>
-          <!--<%= f.text_field :score %>-->
+    	    <%= f.label :score %>
         </p>
           <div align="center">
         <div id="idContainer2">
           <style>
-            #idContainer2{border:0px solid #000;width:100px; height:100px; background: center no-repeat;}
+            #idContainer2{border:0px solid #000;width:128px; height:118px; background: center no-repeat;  border-radius:65px;
+  overflow:hidden; cursor:pointer;}
           </style>
           <script>
             (function(){
-              var container = $$("idContainer2"), src = "http://imageshack.com/a/img661/1977/w17dUW.png",
+              var container = $$("idContainer2"), src ="http://imageshack.com/a/img538/6042/ERrlXE.png",
               it = new ImageTrans2(container,"score2");
               it.load(src);
             })()
           </script>
         </div>
     </div>
+	<p>Score Range: 1-100</p>
+	</div>
         <% end %>
+<div style="clear:both">
  <h3> <strong>ALL COMMENTS</strong></h3>
         <% @comments2.each do |comment| %>
         <p>
 	        <strong><%= comment.created_at %></strong><br>
           <%= comment.content %>
+          [score: <%= comment.score %>]
         </p>
         <% end %>
-    
+    </div>
       </div>
   </div>
 </div>
